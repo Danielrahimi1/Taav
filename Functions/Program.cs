@@ -43,7 +43,7 @@ void PrintNames(params string[] names)
 string CountDown(int num, string joined = "")
 {
     if (num == 1)
-        return joined + " " + num;
+        return joined + num;
     else
         return CountDown(num - 1, $"{joined + num} ");
 }
