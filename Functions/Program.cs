@@ -40,10 +40,10 @@ void PrintNames(params string[] names)
     Console.WriteLine(namesConcatenated);
 }
 
-string CountDown(int num, string joined = "")
+string CountDown(int num)
 {
     if (num == 1)
-        return joined + num;
-    return CountDown(num - 1, $"{joined + num} ");
+        return $"{num}";
+    return $"{num} {CountDown(num - 1)}";
 }
 #endregion
