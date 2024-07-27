@@ -44,7 +44,6 @@ string CountDown(int num, string joined = "")
 {
     if (num == 1)
         return joined + num;
-    else
-        return CountDown(num - 1, $"{joined + num} ");
+    return CountDown(num - 1, $"{joined + num} ");
 }
 #endregion
