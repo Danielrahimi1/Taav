@@ -5,7 +5,7 @@ SayHelloTo("Adam");
 
 
 // _ = CountDown(12);
-CountDown(12);
+Console.WriteLine(CountDown(12));
 PrintNames("John", "Jones", "Joseph", "Jacob", "Job", "Jesus");
 
 
@@ -40,17 +40,11 @@ void PrintNames(params string[] names)
     Console.WriteLine(namesConcatenated);
 }
 
-int CountDown(int num)
+string CountDown(int num, string joined = "")
 {
     if (num == 1)
-    {
-        Console.WriteLine(num + " ");
-        return 1;
-    }
+        return joined + " " + num;
     else
-    {
-        Console.Write(num + " ");
-        return CountDown(num - 1);
-    }
+        return CountDown(num - 1, $"{joined + num} ");
 }
 #endregion
