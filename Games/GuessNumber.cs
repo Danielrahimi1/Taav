@@ -1,53 +1,38 @@
 using static System.Console;
 public class GuessNumber
 {
-    private readonly Random _random;
-    private int NumberToGuess { get; set; }
+    private int NumberToGuess { get; init; }
     private int CountGuesses { get; set; }
-    private void IncrementGuess() => CountGuesses += 1;
     public GuessNumber()
     {
-        _random = new Random();
-        NumberToGuess = _random.Next(1, 101);
+        NumberToGuess = new Random().Next(1, 101);
         CountGuesses = 0;
     }
 
     public void Play()
     {
-        string guess = "";
         int num;
-        while (guess != "equal")
+        do
         {
             num = GetNum();
-            guess = Guess(num);
-
-            if (guess == "equal")
-                WriteLine($"You guessed right in {CountGuesses} guesses.");
-            else
-                WriteLine($"You guessed {guess}");
-        }
+            IncrementGuess();
+            string msg = num switch
+            {
+                int x when x > NumberToGuess => "You guessed bigger.",
+                int x when x < NumberToGuess => "You guessed smaller.",
+                _ => $"You guessed right in {CountGuesses} guesses."
+            };
+            WriteLine(msg);
+        } while (num != NumberToGuess);
     }
 
-    private string Guess(int num)
-    {
-        IncrementGuess();
-
-        if (num < NumberToGuess)
-            return "smaller";
-        if (num > NumberToGuess)
-            return "bigger";
-        return "equal";
-    }
-
+    private void IncrementGuess() => CountGuesses++;
     private static int GetNum()
     {
-        string str;
         while (true)
         {
             Write("Guess a number : ");
-            str = ReadLine()!;
-            if (int.TryParse(str, out int num)) return num;
+            if (int.TryParse(ReadLine(), out int num)) return num;
         }
     }
-
 }
