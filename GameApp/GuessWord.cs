@@ -11,7 +11,7 @@ public class GuessWord : Game
         string[] words = ["csharp", "java", "rust", "js", "go", "c", "python"];
         WordToGuess = words[new Random().Next(words.Length)];
         CountGuesses = 0;
-        Name = "GuessWord";
+        Name = name;
         Description = description;
     }
 
