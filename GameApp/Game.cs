@@ -1,6 +1,8 @@
+namespace Games;
+
 public abstract class Game
 {
-    protected string Name { get; init; }
-    protected int CountGuesses { get; set; }
-    public abstract void Start();
+    public abstract string Name { get; init; }
+    public virtual string Description { get; init; }
+    public abstract void Play();
 }
