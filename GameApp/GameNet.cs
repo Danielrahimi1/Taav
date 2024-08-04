@@ -1,25 +1,55 @@
-using static System.Console;
 using Games;
-namespace Gamenet;
-public class GameNet
-{
-    public Game ObjGame { get; set; }
 
-    public void Play()
+namespace Gamenet;
+public class GameNet //(string player, params Game[] games)
+{
+    // private List<Game> _games;
+    private string _player;
+    private List<Game> _games = [];
+    public GameNet(string player) //, params Game[] games)
     {
-        Buy();
-        ObjGame.Start();
+        _player = player;
+        // _games = games;
     }
-    private void Buy()
+
+    public void AddGame(Game game)
+    {
+        _games.Add(game);
+    }
+
+    public void ComeIn()
+    {
+        WriteLine($"Welcome, Dear {_player}.");
+        ShowGames();
+        Write($"Select a game: ");
+        PlayGame(GetChoice());
+    }
+
+    private void PlayGame(int id)
+    {
+        var game = _games[id - 1];
+        WriteLine($"Welcome {_player}. Enjoy the {game.Name}.");
+        game.Play();
+    }
+
+    private void ShowGames()
+    {
+        for (int i = 0; i < _games.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_games[i].Name} - {_games[i].Description}");
+        }
+    }
+
+    private int GetChoice()
     {
         while (true)
         {
-            WriteLine("1. GuessNumber\n2. GuessWord\n3. Exit");
-            switch (ReadLine())
+            if (int.TryParse(ReadLine()!, out int userInput))
             {
-                case "1": ObjGame = new GuessNumber(); return;
-                case "2": ObjGame = new GuessWord(); return;
-                case "3": Environment.Exit(0); return;
+                if (1 <= userInput && userInput <= _games.Count)
+                {
+                    return userInput;
+                }
             }
         }
     }
