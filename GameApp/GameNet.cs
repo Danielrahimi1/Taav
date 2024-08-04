@@ -1,15 +1,13 @@
 using Games;
 
 namespace Gamenet;
-public class GameNet //(string player, params Game[] games)
+public class GameNet
 {
-    // private List<Game> _games;
     private string _player;
     private List<Game> _games = [];
-    public GameNet(string player) //, params Game[] games)
+    public GameNet(string player)
     {
         _player = player;
-        // _games = games;
     }
 
     public void AddGame(Game game)
