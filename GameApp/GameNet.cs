@@ -4,16 +4,15 @@ namespace Gamenet;
 public class GameNet
 {
     private readonly string _player;
-    private List<Game> _games;
+    private List<Game> _games = [];
 
     // To be implemented
     // Params Collection
     // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/params-collections
-    public GameNet(string player, List<Game>? games = null)
+    public GameNet(string player, params Game[] games)
     {
         _player = player;
-        _games = games!;
-        _games ??= [];
+        _games.AddRange(games);
     }
 
     public void AddGame(Game game)

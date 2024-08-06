@@ -1,15 +1,13 @@
 ﻿using Games;
 using Gamenet;
 
-var games = new List<Game>{
-    new GuessNumber(),
-    new GuessNumber(),
-    new GuessNumber(),
-    new GuessNumber(),
-    new GuessNumber(),
-};
 
-var gameNet = new GameNet("John", games);
+
+var gameNet = new GameNet("John", new GuessNumber(),
+    new GuessNumber(),
+    new GuessNumber(),
+    new GuessNumber(),
+    new GuessNumber());
 
 // gameNet.AddGame(new GuessNumber());
 // gameNet.AddGame(new GuessNumber("Rockstar Guess Number"));
