@@ -3,7 +3,7 @@ using Games;
 namespace Gamenet;
 public class GameNet
 {
-    private string _player;
+    private readonly string _player;
     private List<Game> _games;
 
     // To be implemented
