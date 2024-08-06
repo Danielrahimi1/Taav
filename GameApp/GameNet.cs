@@ -9,10 +9,10 @@ public class GameNet
     // To be implemented
     // Params Collection
     // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/params-collections
-    public GameNet(string player, List<Game> games = null)
+    public GameNet(string player, List<Game>? games = null)
     {
         _player = player;
-        _games = games;
+        _games = games!;
         _games ??= [];
     }
 
